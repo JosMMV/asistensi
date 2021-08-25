@@ -32,7 +32,7 @@ export const useCountries = () => {
     setState({
       isLoading: false,
       countries: countriesRes.data.Countries.sort((a, b) => a.Name > b.Name ? 1 : a.Name < b.Name ? -1 : 0),
-      currencies: currenciesRes.data.Currencies
+      currencies: currenciesRes.data.Currencies.filter(({ Code }) => Code === 'USD' || Code === 'EUR' || Code === 'CAD' || Code === 'ETB')
     })
   }
 

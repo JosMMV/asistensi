@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import SplashScreen from 'react-native-splash-screen'
 
 import { AuthProvider } from './src/context/AuthContext'
+import { FlyProvider } from './src/context/FlyContext'
 import AppNavigator from './src/navigation/AppNavigator'
 
 const App = () => {
@@ -19,7 +20,9 @@ const App = () => {
 const AppState = ({ children }: any) => {
   return (
     <AuthProvider>
-      {children}
+      <FlyProvider>
+        {children}
+      </FlyProvider>
     </AuthProvider>
   )
 }

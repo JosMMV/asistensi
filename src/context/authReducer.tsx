@@ -2,9 +2,8 @@ import { authInitialState, AuthState } from './AuthContext'
 
 type AuthAction =
   { type: 'signIn' } |
-  // { type: 'changeFavIcon', payload: string } |
-  { type: 'logout' } //|
-// { type: 'changeUsername', payload: string }
+  { type: 'logout' } |
+  { type: 'setDidTryAutoLogin' }
 
 export const authReducer = (state: AuthState, action: AuthAction): AuthState => {
   switch (action.type) {
@@ -21,12 +20,12 @@ export const authReducer = (state: AuthState, action: AuthAction): AuthState => 
     //   }
     case 'logout':
       return authInitialState
-    // case 'changeUsername':
-    //   return {
-    //     ...state,
-    //     username: action.payload
-    //   }
 
+    case 'setDidTryAutoLogin':
+      return {
+        ...state,
+        didTryAutoLogin: true
+      }
     default:
       return state
   }
